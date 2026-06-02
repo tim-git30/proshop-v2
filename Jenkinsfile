@@ -30,8 +30,8 @@ pipeline {
             steps {
                 echo '===== Deploiement ====='
                 sh '''
-                docker compose down || true
-                docker compose up -d
+                docker-compose down || true
+                docker-compose up -d
                 '''
             }
         }
@@ -41,7 +41,7 @@ pipeline {
                 sh '''
                 docker ps
                 echo "--- Statut des services Compose ---"
-                docker compose ps
+                docker-compose ps
                 '''
             }
         }
