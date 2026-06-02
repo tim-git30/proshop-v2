@@ -1,0 +1,15 @@
+# Image légère de Node
+FROM node:20-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm ci
+
+COPY . .
+
+# Exposer le port par défaut de React [cite: 58]
+EXPOSE 3000
+
+CMD ["npm", "start"]
