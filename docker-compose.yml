@@ -10,7 +10,9 @@ services:
     volumes:
       - mongo-data:/data/db
     networks:
-      - proshop-network
+      proshop-network:
+        aliases:
+          - mongo
 
   backend:
     build:
@@ -27,7 +29,9 @@ services:
     depends_on:
       - mongo
     networks:
-      - proshop-network
+      proshop-network:
+        aliases:
+          - backend
 
   frontend:
     build:
@@ -38,7 +42,9 @@ services:
     depends_on:
       - backend
     networks:
-      - proshop-network
+      proshop-network:
+        aliases:
+          - frontend
 
   nginx:
     build:
